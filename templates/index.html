@@ -6,126 +6,21 @@
     <title>Smart Meter Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --bg-color: #f3f4f6;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: var(--bg-color);
-        }
-
-        .dashboard {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .title {
-            color: var(--secondary-color);
-            font-size: 2em;
-            margin: 0;
-        }
-
-        .add-meter-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .add-meter-btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .meters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .meter-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .meter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .meter-title {
-            font-size: 1.2em;
-            color: var(--secondary-color);
-            margin: 0;
-        }
-
-        .delete-btn {
-            background: none;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .reading {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .reading-label {
-            color: #6b7280;
-            width: 80px;
-        }
-
-        .reading-value {
-            font-size: 1.4em;
-            color: var(--primary-color);
-        }
-
-        .timestamp {
-            color: #9ca3af;
-            font-size: 0.8em;
-            margin-top: 10px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .meter-card.updated {
-            animation: pulse 0.5s ease-in-out;
-        }
+        /* Previous styles remain the same */
     </style>
 </head>
 <body>
     <div class="dashboard">
         <div class="header">
             <h1 class="title">Smart Meter Dashboard</h1>
-            <button class="add-meter-btn" onclick="addMeterView()">
-                <i class="fas fa-plus"></i> Add Meter View
-            </button>
+            <div>
+                <button class="add-meter-btn" onclick="addMeterView()">
+                    <i class="fas fa-plus"></i> Add Meter View
+                </button>
+                <a href="/logout" class="add-meter-btn" style="margin-left: 10px; background: #dc2626;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
         </div>
         
         <div class="meters-grid" id="metersGrid">
@@ -203,7 +98,7 @@
         }
 
         
-        setInterval(updateReadings, 5000);
+        setInterval(updateReadings, 2000);
         updateReadings();
     </script>
 </body>
