@@ -1,20 +1,14 @@
-# app.py
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from datetime import datetime
 from functools import wraps
 import os
-from werkzeug.security import generate_password_hash, check_password_hash
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
+app.secret_key = 'smartmeter2024secretkey'  # Fixed secret key
 
-# Get credentials from environment variables
-ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
-ADMIN_PASSWORD_HASH = generate_password_hash(os.environ.get('ADMIN_PASSWORD', 'smartmeter123'))
+# Fixed credentials
+ADMIN_USERNAME = "smartmeter"
+ADMIN_PASSWORD = "meter2024"
 
 latest_readings = {}
 
@@ -32,7 +26,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         
-        if username == ADMIN_USERNAME and check_password_hash(ADMIN_PASSWORD_HASH, password):
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
             session['logged_in'] = True
             return redirect(url_for('index'))
         else:
