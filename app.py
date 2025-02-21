@@ -6,12 +6,10 @@ import json
 
 app = Flask(__name__)
 app.secret_key = 'smartmeter2024secretkey'
-
-# Fixed credentials
 ADMIN_USERNAME = "smartmeter"
 ADMIN_PASSWORD = "meter2024"
 
-# Database initialization
+
 def init_db():
     conn = sqlite3.connect('meters.db')
     c = conn.cursor()
